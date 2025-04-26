@@ -13,5 +13,6 @@
 	<h1 class="title">ようこそ</h1>
 	<a href="Login">ログインはこちら</a>
 	<a href="RegisterServlet">アカウント新規作成はこちら</a>
+	
 </body>
 </html>
