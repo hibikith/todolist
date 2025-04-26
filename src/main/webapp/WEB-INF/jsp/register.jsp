@@ -11,7 +11,7 @@
 <body>
 	
 	<h2>ログイン</h2>
-		<form ation="Register" method="post">
+		<form ation="register" method="post">
 		<label for="username">ユーザーネーム</label>
 		<input type="text" id="username" name="username">
 		<label for="password">パスワード</label>
