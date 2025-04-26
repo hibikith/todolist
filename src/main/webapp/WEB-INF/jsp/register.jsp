@@ -5,17 +5,20 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>新規登録</title>
 </head>
 
 <body>
 	
 	<h2>ログイン</h2>
 		<form ation="register" method="post">
-		<label for="username">ユーザーネーム</label>
-		<input type="text" id="username" name="username">
-		<label for="password">パスワード</label>
-		<input type="text" id="password" name="password">
+			<label for="username">ユーザー名</label>
+			<input type="text" id="username" name="username" required>
+			
+			<label for="password">パスワード</label>
+			<input type="text" id="password" name="password" required>
+			
+			<button type="submit">登録</button>
 		</form>
 		
 </body>
