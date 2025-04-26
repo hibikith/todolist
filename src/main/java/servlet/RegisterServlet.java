@@ -41,4 +41,5 @@ public class RegisterServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	
 }
