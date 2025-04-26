@@ -12,6 +12,7 @@
 	
 	<h2>ログイン</h2>
 		<form ation="register" method="post">
+		
 			<label for="username">ユーザー名</label>
 			<input type="text" id="username" name="username" required>
 			
@@ -19,6 +20,7 @@
 			<input type="text" id="password" name="password" required>
 			
 			<button type="submit">登録</button>
+			
 		</form>
 		
 </body>

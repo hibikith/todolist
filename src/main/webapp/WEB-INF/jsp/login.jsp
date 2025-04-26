@@ -13,10 +13,13 @@
 
 	<h2>ログイン</h2>
 		<form ation="login" method="post">
-		<label for="username">ユーザーネーム</label>
-		<input type="text" id="username" name="username">
-		<label for="password">パスワード</label>
-		<input type="text" id="password" name="password">
+		
+			<label for="username">ユーザーネーム</label>
+			<input type="text" id="username" name="username">
+			
+			<label for="password">パスワード</label>
+			<input type="text" id="password" name="password">
+			
 		</form>
 
 </body>
