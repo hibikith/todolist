@@ -20,7 +20,7 @@
 			<label for="password">パスワード</label>
 			<input type="text" id="password" name="password">
 			
-			<button type="submit">登録</button>
+			<button type="submit">ログイン</button>
 		</form>
 
 </body>
