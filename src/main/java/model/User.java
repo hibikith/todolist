@@ -8,8 +8,7 @@ public class User {
     // デフォルトコンストラクタ
     public User() {}
     // 引数アリのコンストラクタ
-    public User(int id, String username) {
-        this.id = id;
+    public User(String username , String password) {
         this.username = username;
     }
 
