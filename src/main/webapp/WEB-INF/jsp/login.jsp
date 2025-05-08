@@ -21,6 +21,7 @@
 			<input type="password" id="password" name="password">
 			<input type="submit" value="ログイン">
 			
+			<button type="submit">ログイン</button>
 		</form>
 
 </body>
