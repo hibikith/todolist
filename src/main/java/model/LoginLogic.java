@@ -7,8 +7,8 @@ public class LoginLogic {
 	UserDAO dao = new UserDAO();
 	
 	public boolean execute(User user){
-		boolean a = dao.findUser(user);
-		return a;
+		boolean result = dao.findUser(user);
+		return result;
 	}
 
 }

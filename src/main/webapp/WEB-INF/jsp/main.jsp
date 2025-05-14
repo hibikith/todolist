@@ -18,6 +18,5 @@
 				<c:out value="${taskList.escription}">
 				<a>タスクの編集</a>
 		</form>
-		
 </body>
 </html>

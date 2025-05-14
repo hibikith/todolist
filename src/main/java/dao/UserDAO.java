@@ -25,7 +25,6 @@ public class UserDAO {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
             	user.setUserId(rs.getInt("userId"));
-            	user.setCharge(rs.getInt("charge"));
             	return true;
             }
         } catch (SQLException e) {

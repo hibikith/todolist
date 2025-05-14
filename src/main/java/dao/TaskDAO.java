@@ -19,7 +19,7 @@ public class TaskDAO{
 	// タスク情報を全て取得し＜降順＞リストを返す
 	public List<Task> findList() {
 		List<Task> taskList = new ArrayList<>();
-		String sql = "SELECT * FROM taskList ORDER BY taskID DESC";
+		String sql = "SELECT * FROM tasklist ORDER BY taskId DESC";
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 			// SQL送信準備
 			PreparedStatement stmt = conn.prepareStatement(sql);
