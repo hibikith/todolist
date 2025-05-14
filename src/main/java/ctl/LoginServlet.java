@@ -1,6 +1,8 @@
 package ctl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -8,19 +10,18 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.GetTaskList;
 import model.LoginLogic;
+import model.Task;
 import model.User;
 
-/**
- * Servlet implementation class Login
- */
+
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public LoginServlet() {
         super();
     }
@@ -46,9 +47,25 @@ public class LoginServlet extends HttpServlet {
 	
 	//　ログイン成功時
     if(bo == true) {
-    //セッションスコープ
+    //セッションスコープにuserを保存する
+    	HttpSession session = request.getSession();
+    	session.setAttribute("user", user);
+    //todoリストの取得
+    	List<Task> taskList = new ArrayList<Task>();
+    	GetTaskList gtl = new GetTaskList();
+    	taskList = gtl.execute(user);
+    // taskListに格納されたリストをリクエストスコープに保存する
+    	request.setAttribute("taskLiset", taskList);
+    //メイン画面に推移
+    	RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
+    	dispatcher.forward(request, response);
+    }else {
+    	request.setAttribute("errorMessage", "ユーザー名またはパスワードが間違っています。");
     	
+    	// JSPにフォワードして表示
+    	RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/login.jsp");
+        dispatcher.forward(request, response);
+        return;
     }
-	
-	}
+  }
 }
