@@ -1,12 +1,17 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public class Task implements Serializable{
-	private int id;             // タスクの一意なID (DBの主キーに対応)
-    private int userId;         // このタスクを所有するユーザーのID (DBの外部キーに対応)
-    private String description; // タスクの内容
-    private boolean done;       // タスクが完了したかどうか (true:完, false:未完了)
+	private int id;            // タスクの一意なID (DBの主キーに対応)
+    private int userId;        // このタスクを所有するユーザーのID (DBの外部キーに対応)
+    private String taskName;   
+    private String status;     // 未着手, 進行中, 完了
+    private String priority;   // 高, 中, 低
+    private LocalDate dueDate; // 期限 (java.time.LocalDate)
+    private Timestamp createdAt;
 
     //引数なしコンストラクタ
     public Task() {}
@@ -16,7 +21,47 @@ public class Task implements Serializable{
         return id;
     }
 
-    public void setId(int id) {
+    public String getTaskName() {
+		return taskName;
+	}
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
+
+	public LocalDate getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(LocalDate dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setId(int id) {
         this.id = id;
     }
 
@@ -27,21 +72,17 @@ public class Task implements Serializable{
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
-    public String getDescription() {
-        return description;
+    
+    @Override
+    public String toString() {
+        return "Task{" +
+               "id=" + id +
+               ", userId=" + userId +
+               ", taskName='" + taskName + '\'' +
+               ", status='" + status + '\'' +
+               ", priority='" + priority + '\'' +
+               ", dueDate=" + dueDate +
+               ", createdAt=" + createdAt +
+               '}';
     }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isDone() {
-        return done;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
-    }
-
 }

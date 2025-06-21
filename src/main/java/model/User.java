@@ -1,16 +1,25 @@
 package model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+	
     private int id;
-    private String username;
-    private String password; 
+    private String userName;
+    private String password;
+
     
-    // デフォルトコンストラクタ
-    public User() {}
+	// デフォルトコンストラクタ
+    public User() {
+    	
+    }
+    
     // 引数アリのコンストラクタ
-    public User(int id, String username) {
+    public User(int id , String userName, String password) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
+        this.password = password;
     }
 
     public int getId() {
@@ -22,11 +31,11 @@ public class User {
     }
     
     public String getUsername() {
-    	return username; 
+    	return userName; 
     }
     
     public void setUsername(String username) {
-    	this.username = username; 
+    	this.userName = username; 
     }
     
     public String getPassword() {
@@ -35,6 +44,15 @@ public class User {
     
     public void setPassword(String password) {
     	this.password = password;
+    }
+    
+    @Override
+    public String toString() {
+        return "User{" +
+               "id=" + id +
+               ", username='" + userName + '\'' +
+               ", password='" + password  +
+               '}';
     }
     
 }
