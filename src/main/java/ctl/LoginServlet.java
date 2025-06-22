@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import dao.UserDAO;
+import model.LoginCheck;
 import model.User;
 
 
@@ -51,8 +51,8 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		//  ユーザー認証をModel（UserDAO）に委譲
-		UserDAO userDAO = new UserDAO();
-		User loggedInUser = userDAO.authenticateUser(username, password); // 認証メソッドを呼び出し
+		LoginCheck loginCheck = new LoginCheck();
+		User loggedInUser = loginCheck.authenticateUser(username, password); // 認証メソッドを呼び出し
 		
 		if (loggedInUser != null) {
 			

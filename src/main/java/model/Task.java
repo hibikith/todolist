@@ -24,10 +24,14 @@ public class Task implements Serializable{
     }
     
     //各privateフィールドに対するgetter/setter
-    public int getId() {
+    public int getTaskId() {
         return taskId;
     }
+    
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
 
+    }
 
     public String getTaskName() {
 		return taskName;
@@ -68,11 +72,6 @@ public class Task implements Serializable{
 	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
-
-	public void setId(int id) {
-        this.id = id;
-
-    }
 
     public int getUserId() {
         return userId;

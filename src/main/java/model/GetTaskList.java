@@ -6,9 +6,9 @@ import dao.TaskDAO;
 
 public class GetTaskList {
 
-	public List<Task> execute(User user) {
+	public List<Task> execute(int userId) {
 		TaskDAO taskDAO = new TaskDAO();
-		List<Task> taskList = taskDAO.findList();
+		List<Task> taskList = taskDAO.getTaskByUserId(userId);
 		return taskList;
 	}
 

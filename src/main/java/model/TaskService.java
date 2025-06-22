@@ -45,7 +45,7 @@ public class TaskService {
             return false;
         }
         Task taskToUpdate = new Task();
-        taskToUpdate.setId(taskId);
+        taskToUpdate.setTaskId(taskId);
         taskToUpdate.setUserId(userId);
         taskToUpdate.setTaskName(taskName.trim());
         taskToUpdate.setStatus(status);

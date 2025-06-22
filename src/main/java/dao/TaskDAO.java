@@ -37,7 +37,7 @@ public class TaskDAO{
 
             while (rs.next()) {
                 Task task = new Task();
-                task.setId(rs.getInt("id"));
+                task.setTaskId(rs.getInt("task_id"));
                 task.setUserId(rs.getInt("user_id"));
                 task.setTaskName(rs.getString("task_name"));
                 task.setStatus(rs.getString("status"));           // ステータス取得
@@ -102,7 +102,7 @@ public class TaskDAO{
             } else {
                 pstmt.setNull(4, java.sql.Types.DATE);
             }
-            pstmt.setInt(5, task.getId());
+            pstmt.setInt(5, task.getTaskId());
             pstmt.setInt(6, task.getUserId()); // ユーザーIDも条件に含めることで、他人のタスクを更新できないようにする
 
             int affectedRows = pstmt.executeUpdate();
