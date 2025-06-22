@@ -17,7 +17,7 @@ import model.User;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	/*
 	 * 
 	 */
@@ -25,10 +25,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		// login.jspへフォワードする
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	}
-	
+
 	/*  POSTリクエスト（ログインフォームからデータを送信する）
 	 * 
 	 */
@@ -70,3 +71,4 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 }
+

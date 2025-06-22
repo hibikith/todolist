@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 
 public class Task implements Serializable{
-	private int id;            // タスクの一意なID (DBの主キーに対応)
+	private int taskId;            // タスクの一意なID (DBの主キーに対応)
     private int userId;        // このタスクを所有するユーザーのID (DBの外部キーに対応)
     private String taskName;   
     private String status;     // 未着手, 進行中, 完了
@@ -13,13 +13,21 @@ public class Task implements Serializable{
     private LocalDate dueDate; // 期限 (java.time.LocalDate)
     private Timestamp createdAt;
 
-    //引数なしコンストラクタ
+
+	//引数なしコンストラクタ
     public Task() {}
+    
+    //引数ありのコンストラクタ
+    public Task(int taskId, String taskName, String description) {
+    	this.taskId = taskId;
+    	this.taskName = taskName;
+    }
     
     //各privateフィールドに対するgetter/setter
     public int getId() {
-        return id;
+        return taskId;
     }
+
 
     public String getTaskName() {
 		return taskName;
@@ -63,6 +71,7 @@ public class Task implements Serializable{
 
 	public void setId(int id) {
         this.id = id;
+
     }
 
     public int getUserId() {
@@ -76,7 +85,7 @@ public class Task implements Serializable{
     @Override
     public String toString() {
         return "Task{" +
-               "id=" + id +
+               "id=" + taskId +
                ", userId=" + userId +
                ", taskName='" + taskName + '\'' +
                ", status='" + status + '\'' +
@@ -85,4 +94,5 @@ public class Task implements Serializable{
                ", createdAt=" + createdAt +
                '}';
     }
+
 }

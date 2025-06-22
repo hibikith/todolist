@@ -4,7 +4,7 @@ package model;
 import dao.UserDAO;
 
 public class LoginCheck {
-		
+
 		 private UserDAO userDAO; // UserDAOのインスタンスを保持する
 		 
 		 //コンストラクタでインスタンスを生成する

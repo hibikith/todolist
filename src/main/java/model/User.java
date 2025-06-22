@@ -22,11 +22,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getId() {
-    	return id; 
+    public int getUserId() {
+    	return id;
     }
     
-    public void setId(int id) {
+    public void setUserId(int id) {
     	this.id = id; 
     }
     

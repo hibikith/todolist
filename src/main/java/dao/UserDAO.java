@@ -51,7 +51,7 @@ public class UserDAO {
 			
 			if (rs.next()) {
 				user = new User();
-				user.setId(rs.getInt("id"));
+				user.setUserId(rs.getInt("id"));
 				user.setUsername(rs.getString("username"));
 			}
 			
@@ -108,5 +108,6 @@ public class UserDAO {
 		}
 		return false;
 	}
+
 }
 
