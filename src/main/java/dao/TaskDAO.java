@@ -10,8 +10,8 @@ import java.util.List;
 import model.Task;
 
 /**
- * タスクデータへのデータベースアクセスを提供するDAO（Data Access Object）クラス。
- * データベース接続の管理と、タスク情報のCRUD操作を実行。
+ * ユーザーデータへのデータベースアクセスを提供するDAOクラス。
+ * データベース接続の管理と、ユーザー認証および登録操作を実行。
  */
 public class TaskDAO {
     // データベース接続情報
