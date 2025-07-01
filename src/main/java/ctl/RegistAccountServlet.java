@@ -11,55 +11,63 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.UserDAO;
 
 /**
- * Servlet implementation class RegisterServlet
+ * アカウント登録リクエストを処理するサーブレット。
+ * GETリクエストでは登録フォームを表示し、
+ * POSTリクエストではユーザー情報の登録を実行。
  */
 @WebServlet("/registAccount")
 public class RegistAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	// GETリクエスト（アカウント登録画面の表示）
+	/**
+	 * GETリクエストの処理。
+	 * アカウント登録画面の表示。
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/registAccount.jsp").forward(request, response);
 	}
 	
-	// POSTリクエスト（アカウント登録フォームからのデータ送信）
+	/**
+	 * POSTリクエストの処理。
+	 * アカウント登録フォームからのデータ送信とユーザー登録の実行。
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
     		throws ServletException, IOException {
 		
 		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
-		String confirmPassword = request.getParameter("confirmPassword"); // 確認用パスワード
+		String confirmPassword = request.getParameter("confirmPassword");
 				
-
-		System.out.println("111");
 		// 入力値のバリデーション
 		if (username == null || username.isEmpty() || password == null || password.isEmpty() || confirmPassword == null || confirmPassword.isEmpty()) {
-			System.out.println("222");
 			request.setAttribute("errorMessage", "すべての項目を入力してください。");
 			request.getRequestDispatcher("/WEB-INF/jsp/registAccount.jsp").forward(request, response);
 			return;
 		}
+		
+		// パスワードと確認用パスワードの一致チェック
 		if (!password.equals(confirmPassword)) {
 			request.setAttribute("errorMessage", "パスワードと確認用パスワードが一致しません。");
 			request.getRequestDispatcher("/WEB-INF/jsp/registAccount.jsp").forward(request, response);
 			return;	
 		}
-		System.out.println("3333");
+		
 		UserDAO userDAO = new UserDAO();
 		
-		// ユーザー名が既に存在するかチェック
+		// ユーザー名の存在チェック
 		if (userDAO.isUsernameExists(username)) {
 			request.setAttribute("errorMessage", "このユーザー名は既に使用されています。");
 			request.getRequestDispatcher("/WEB-INF/jsp/registAccount.jsp").forward(request, response);
 			return;
 		}
-		// ユーザーの登録					
+		
+		// ユーザーの登録処理
 		if (userDAO.registerUser(username, password)) {
-			// 登録成功					
-			// ログインページへリダイレクトする				
-			response.sendRedirect(request.getContextPath() + "/LoginServlet?registered=true"); // 登録成功を伝えるパラメータ
+			// 登録成功時のログインページへのリダイレクト
+			response.sendRedirect(request.getContextPath() + "/LoginServlet?registered=true"); 
 		} else {
+			// 登録失敗時のエラーメッセージ設定
 			request.setAttribute("errorMessage", "ユーザー登録に失敗しました。時間をおいて再度お試しください。");
 			request.getRequestDispatcher("/WEB-INF/jsp/registAccount.jsp").forward(request, response);
 		}

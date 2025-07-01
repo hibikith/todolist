@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+/* タスク用コンテナ */
+.container-task {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 期限日の幅とテキスト配置 */
+.dueDate {
+    width: 150px; 
+    text-align: center;
+}
+
+/* 優先度の幅とテキスト配置 */
+.priority {
+    width: 100px; 
+    text-align: center;
+}
+
+/* テーブルの中央配置と横スクロール */
+.table-center {
+    width: 100%; 
+    overflow-x: auto; 
+}
+
+/* テーブルの共通スタイル */
+table {
+    width: 100%; 
+    margin: 0 auto; 
+    border-collapse: collapse; 
+    box-sizing: border-box; 
+}
+
+/* テキスト中央揃え */
+.center{
+    text-align: center;
+}
+
+/* 追加ボタンのスタイル */
+.add-button {
+    width: 30%;
+    margin:0 auto;
+    margin-bottom: 10px;
+    background-color: #55c559;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* タスク入力フィールドの幅 */
+.input-task{
+    width: 30%;
+    margin:0 auto;
+}
+
+/* 要素の中央配置用マージン */
+.margin{
+    margin: 0 auto;
+}

@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Task implements Serializable{
 	private int taskId;            // タスクの一意なID (DBの主キーに対応)
@@ -18,7 +19,7 @@ public class Task implements Serializable{
     public Task() {}
     
     //引数ありのコンストラクタ
-    public Task(int taskId, String taskName, String description) {
+    public Task(int taskId, String taskName) {
     	this.taskId = taskId;
     	this.taskName = taskName;
     }
@@ -64,6 +65,16 @@ public class Task implements Serializable{
 	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
+	
+	public String getFormattedDueDate() {
+        if (this.dueDate == null) {
+            return "未設定"; // または空文字列 ""
+        }
+        // yyyy-MM-dd 形式でフォーマット
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return this.dueDate.format(formatter);
+    }
+
 
 	public Timestamp getCreatedAt() {
 		return createdAt;

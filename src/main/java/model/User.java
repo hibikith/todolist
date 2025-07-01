@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 	
-    private int id;
+    private int user_id;
     private String userName;
     private String password;
 
@@ -16,18 +16,18 @@ public class User implements Serializable {
     }
     
     // 引数アリのコンストラクタ
-    public User(int id , String userName, String password) {
-        this.id = id;
+    public User(int user_id , String userName, String password) {
+        this.user_id = user_id;
         this.userName = userName;
         this.password = password;
     }
 
     public int getUserId() {
-    	return id;
+    	return user_id;
     }
     
-    public void setUserId(int id) {
-    	this.id = id; 
+    public void setUserId(int user_id){
+    	this.user_id = user_id; 
     }
     
     public String getUsername() {
@@ -49,7 +49,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-               "id=" + id +
+               "id=" + user_id +
                ", username='" + userName + '\'' +
                ", password='" + password  +
                '}';

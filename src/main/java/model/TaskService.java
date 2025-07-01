@@ -6,62 +6,66 @@ import java.util.List;
 import dao.TaskDAO;
 
 public class TaskService {
-	private TaskDAO taskDAO;
+
+    private TaskDAO taskDAO; // TaskDAOのインスタンス
 
     public TaskService() {
-        this.taskDAO = new TaskDAO();
-    }
-
-    public List<Task> getTasksForUser(int userId) {
-        return taskDAO.getTaskByUserId(userId);
-    }
-
-    // タスク追加メソッドを更新（初期値を設定）
-    public boolean addTask(int userId, String taskName, String status, String priority, LocalDate dueDate) {
-        if (taskName == null || taskName.trim().isEmpty()) {
-            return false; // タスク名が空の場合は追加しない
-        }
-        Task newTask = new Task();
-        newTask.setUserId(userId);
-        newTask.setTaskName(taskName.trim());
-        newTask.setStatus(status != null && !status.isEmpty() ? status : "未着手"); // デフォルト値
-        newTask.setPriority(priority != null && !priority.isEmpty() ? priority : "中"); // デフォルト値
-        newTask.setDueDate(dueDate);
-        return taskDAO.addTask(newTask);
+        this.taskDAO = new TaskDAO(); 
     }
 
     /**
-     * 既存のタスクを更新します。
-     * @param taskId タスクID
-     * @param userId ユーザーID
-     * @param taskName タスク名
-     * @param status ステータス
-     * @param priority 優先度
-     * @param dueDate 期限
+     * 指定されたユーザーIDのタスクリストを取得する。
+     * @param userId （ユーザーのID）
+     * @return タスクリスト
+     */
+    public List<Task> getUserTasks(int userId) {
+        return taskDAO.getTasksByUserId(userId);
+    }
+
+    /**
+     * 新しいタスクを追加する。
+     * @param task （追加するタスクオブジェクト）
+     * @return 追加が成功した場合はtrue、失敗した場合はfalseを返す
+     */
+    public boolean addTask(Task task) {
+        return taskDAO.addTask(task);
+    }
+    
+    public Task getTaskById(int taskId, int userId) {
+        return taskDAO.getTaskById(taskId, userId);
+    }
+    
+    /**
+     * タスク情報を更新する。
+     * @param taskId 更新対象のタスクID
+     * @param userId タスクを所有するユーザーのID 
+     * @param taskName 新しいタスク名
+     * @param status 新しいステータス
+     * @param priority 新しい優先度
+     * @param dueDate 新しい期限
      * @return 更新が成功した場合はtrue、失敗した場合はfalse
      */
     public boolean updateTask(int taskId, int userId, String taskName, String status, String priority, LocalDate dueDate) {
-        if (taskName == null || taskName.trim().isEmpty()) {
-            return false;
-        }
-        Task taskToUpdate = new Task();
-        taskToUpdate.setTaskId(taskId);
-        taskToUpdate.setUserId(userId);
-        taskToUpdate.setTaskName(taskName.trim());
-        taskToUpdate.setStatus(status);
-        taskToUpdate.setPriority(priority);
-        taskToUpdate.setDueDate(dueDate);
-        return taskDAO.updateTask(taskToUpdate);
+        // 更新対象のTaskオブジェクトを作成し、必要な情報をセット
+        Task task = new Task();
+        task.setTaskId(taskId);   
+        task.setUserId(userId);   
+        task.setTaskName(taskName);
+        task.setStatus(status);
+        task.setPriority(priority);
+        task.setDueDate(dueDate);
+
+        // TaskDAOのupdateTaskメソッドはTaskオブジェクトを引数に取るため、変換して渡す
+        return taskDAO.updateTask(task);
     }
 
     /**
-     * タスクを削除します。
-     * @param taskId 削除するタスクID
-     * @param userId ユーザーID
+     * タスクを削除する
+     * @param taskId （削除するタスクのID）
+     * @param userId 削除を試みるユーザーのID 
      * @return 削除が成功した場合はtrue、失敗した場合はfalse
      */
     public boolean deleteTask(int taskId, int userId) {
         return taskDAO.deleteTask(taskId, userId);
     }
-
 }

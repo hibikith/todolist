@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/* ページ全体のレイアウトと基本スタイル */
+body {
+    display: flex; /* フレックスボックス */
+    justify-content: center; /* 水平中央揃え */
+    align-items: center; /* 垂直中央揃え */
+    min-height: 100vh; /* 全画面高さ */
+    margin: 0; /* 余白なし */
+    background-color: #f0f2f5; /* 背景色 */
+    font-family: 'Arial', sans-serif; /* フォント */
+}
+
+/* ようこそ画面の主要コンテナ */
+.welcome-container {
+    width: 400px; /* 幅 */
+    max-width: 90%; /* 最大幅（レスポンシブ） */
+    margin: 0 auto; /* 左右中央揃え */
+    padding: 30px; /* 余白 */
+    background-color: #ffffff; /* 背景色 */
+    border: 1px solid #e0e0e0; /* ボーダー */
+    border-radius: 8px; /* 角丸 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 影 */
+    text-align: center; /* テキスト中央揃え */
+}
+
+/* ようこそ画面のタイトル */
+.welcome-title {
+    font-size: 2.5em; /* フォントサイズ */
+    color: #333; /* 文字色 */
+    margin-bottom: 15px; /* 下余白 */
+    font-weight: bold; /* 太字 */
+}
+
+/* ようこそ画面のメッセージ */
+.welcome-message {
+    font-size: 1.1em; /* フォントサイズ */
+    color: #666; /* 文字色 */
+    margin-bottom: 30px; /* 下余白 */
+    line-height: 1.5; /* 行の高さ */
+}
+
+.action-buttons-group { /* ボタンのグループ用 */
+    margin-top: 20px;
+}
+
+.action-button { /* ボタンの基本スタイル */
+    display: block; /* ブロック要素にして縦に並べる */
+    width: 80%; /* 幅を調整 */
+    padding: 12px 20px;
+    margin: 15px auto; /* 左右中央、上下マージン */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-decoration: none; /* 下線をなくす */
+    color: white;
+    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+.action-button.login { /* ログイン */
+    background-color: #55c559; /* Green */
+}
+
+.action-button.login:hover {
+    background-color: #45a049;
+}
+
+.action-button.regist { /* 新規作成 */
+    background-color: #007bff; /* Blue */
+}
+
+.action-button.regist:hover {
+    background-color: #0056b3;
+}

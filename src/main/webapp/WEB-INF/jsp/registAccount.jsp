@@ -11,31 +11,28 @@
 </head>
 
 <body>
-<div class="container">
+<div class="auth-container">
 	<p class="p-text">会員登録</p>
-		<!-- フォームの表示 -->
-		<form ation="/regist-account" method="post">
+		<form action="${pageContext.request.contextPath}/registAccount" method="post">
 			<input type="text" 
 	              	name="userName"
-	                placeholder="Username"/>
+	                placeholder="ユーザー名"/>
 	        <input type="password" 
 	      		    name="password"
-	              	placeholder="Password"/>
+	              	placeholder="パスワード"/>
 	        <input type="password" 
          			name="confirmPassword"
-         			placeholder="Confirm Password" />
-         			
+         			placeholder="パスワード（確認用）" />
 	        <button type="submit">登録</button>
 	     </form>
+
+    <div class="links">
+        <p>すでにアカウントをお持ちの方はこちら <a href="${pageContext.request.contextPath}/login">ログイン</a></p>
+    </div>
+    			
+    <c:if test="${not empty errorMessage}">
+	    <p class="message error-message">${errorMessage}</p>
+    </c:if>
 </div>
-<!-- ログイン画面へのリンクの表示 -->	
-<div class="links">
-    <p>ログインの方はこちら <a href="${pageContext.request.contextPath}/login">新規登録</a></p>
-</div>
-			
-<!-- エラーメッセージの表示 -->
-<c:if test="${not empty errorMessage}">
-	<p class="message error-message">${errorMessage}</p>
-</c:if>
 </body>
 </html>
